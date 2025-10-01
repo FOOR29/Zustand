@@ -6,13 +6,15 @@ function App() {
   const { count, increment, decrement } = useCounterStore()
 
   return (
-    <div className='contaier-count'>
-      <h1>Contador Global Zustand: {count}</h1>
-      <div className="buttons">
-        <button onClick={increment}>+</button>
-        <button onClick={decrement}>-</button>
+    <>
+      <div className='contaier-count'>
+        <h1>Contador Global Zustand: {count}</h1>
+        <div className="buttons">
+          <button onClick={increment}>+</button>
+          <button onClick={decrement}>-</button>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

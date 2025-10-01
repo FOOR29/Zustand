@@ -162,3 +162,47 @@ Supongamos que queremos implementar un botón que alterna entre tema claro y osc
 
 ![image Vscode](./public/img/zustand%20cap%203.png)
 
+Explicación paso a paso:
+
+- Definimos el estado: darkMode es un booleano que indica si estamos en modo oscuro. Iniciamos en false (modo claro).
+
+- Acción para alternar: toggleDarkMode invierte el valor de darkMode usando set.
+
+- Persistencia (opcional): Usamos persist (de zustand/middleware) para que el valor de darkMode se guarde en localStorage. Así, si el usuario recarga la página, el tema elegido se mantiene y el parámetro name indica la clave bajo la cual se almacenará en el navegador, facilito papa.
+
+Luego, en un componente React **(por ejemplo ThemeButton.tsx)**, importamos el hook y usamos los valores:
+
+Aquí el botón muestra “Modo claro” cuando estamos en modo oscuro (y viceversa) y al hacer clic dispara toggleDarkMode(), que actualiza el estado global. El hook useThemeStore() entrega siempre el mismo estado compartido y la función para cambiarlo. Gracias al middleware persist, esta preferencia de tema se recuerda incluso tras recargar la página.
+
+
+## Ejemplos cotidianos de uso
+
+Zustand brilla en situaciones donde varios componentes necesitan el mismo dato. Algunos ejemplos comunes:
+
+- Preferencias del usuario: idioma seleccionado, tema (claro/oscuro), configuraciones personales, etc.
+
+- Autenticación: estado de si el usuario está logueado, su token, roles, etc.
+
+- Carrito de compras: lista de productos seleccionados que deben leerse/escribirse desde diferentes páginas o componentes.
+
+- Datos de perfil o formularios: información que se rellena en varios pasos (multi-step) y debe compartirse en diferentes componentes.
+
+- Contadores y métricas: un contador global (como el de las notificaciones) accesible desde cualquier parte de la interfaz.
+
+En todos estos casos, usar useState local requeriría pasar props o contextos, mientras que con un store de Zustand bastaría con importar el hook y listo
+
+## Resumen de pasos y buenas prácticas
+
+- Instala Zustand: npm install zustand (ya lo explicamos)
+
+- Crea el store: Define un archivo en src/store/ para cada conjunto de datos globales. Usa create() con una interfaz que describa tu estado y acciones
+
+- Usa el hook en tus componentes: Importa el hook generado (p.ej. useThemeStore) y llama al hook dentro de la función de tu componente. Desestructura el estado y las funciones que necesites
+
+- Estructura organizada: Mantén un directorio específico (src/store) y nombra los archivos de forma clara. Un store por archivo suele funcionar mejor
+
+- Middleware útil: Considera usar el middleware persist si quieres que parte del estado (como la preferencia de tema) se guarde automáticamente en el navegado
+
+```
+Con estos consejos y ejemplos, deberías poder entender y aplicar Zustand en tu proyecto React con Vite/TypeScript. Es una herramienta poderosa para manejar estados compartidos de forma simple.
+```
