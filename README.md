@@ -172,7 +172,7 @@ Explicación paso a paso:
 
 Luego, en un componente React **(por ejemplo ThemeButton.tsx)**, importamos el hook y usamos los valores:
 
-Aquí el botón muestra “Modo claro” cuando estamos en modo oscuro (y viceversa) y al hacer clic dispara toggleDarkMode(), que actualiza el estado global. El hook useThemeStore() entrega siempre el mismo estado compartido y la función para cambiarlo. Gracias al middleware persist, esta preferencia de tema se recuerda incluso tras recargar la página.
+> Aquí el botón muestra “Modo claro” cuando estamos en modo oscuro (y viceversa) y al hacer clic dispara toggleDarkMode(), que actualiza el estado global. El hook useThemeStore() entrega siempre el mismo estado compartido y la función para cambiarlo. Gracias al middleware persist, esta preferencia de tema se recuerda incluso tras recargar la página.
 
 
 ## Ejemplos cotidianos de uso
@@ -203,6 +203,4 @@ En todos estos casos, usar useState local requeriría pasar props o contextos, m
 
 - Middleware útil: Considera usar el middleware persist si quieres que parte del estado (como la preferencia de tema) se guarde automáticamente en el navegado
 
-```
 Con estos consejos y ejemplos, deberías poder entender y aplicar Zustand en tu proyecto React con Vite/TypeScript. Es una herramienta poderosa para manejar estados compartidos de forma simple.
-```
